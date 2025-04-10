@@ -58,8 +58,9 @@ Extract data from a website and an OLTP database, transform it, and load it into
 
 
 
-    These notebooks are added as separate activities in ADF
-    <img src="https://i.imgur.com/CL67s0o.png" alt="Databricks pipeline">
+  These notebooks are added as separate activities in ADF
+  
+  <img src="https://i.imgur.com/CL67s0o.png" alt="Databricks pipeline">
 
 ### 4th Pipeline
 - This pipeline groups all pipelines into a single pipeline using the Execute Pipeline activity
