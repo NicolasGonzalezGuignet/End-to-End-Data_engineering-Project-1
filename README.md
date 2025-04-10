@@ -64,7 +64,7 @@ Aqui se puede visualizar el poryecto realizado.
 5° Se hace un conexion entre la bd "gold" en databricks y power Bi, para poder ver los datos en tiempo real.
 [imagen](https://i.imgur.com/OpWGgAq.png)
 
-En este file(hipervinculo al arm template) se puede ver el ARM template para aprovisionar un workspace igual en ADF.
+En este [File](arm_template.zip) se puede ver el ARM template para aprovisionar un workspace igual en ADF.
 
  
 
