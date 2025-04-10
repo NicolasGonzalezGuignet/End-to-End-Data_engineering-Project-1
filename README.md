@@ -33,13 +33,22 @@ Aqui se puede visualizar el poryecto realizado. (imagen.png)
 ## Descripcion del proceso
 
 1° pipeline (ingest-http-rebrickable)
-Se crea una [Azure Function](scripts/azure-function/web_scraping.py) para poder hacer webscraping en la pagina "https://rebrickable.com/downloads/" para obtener los links de descarga y podes de esta forma obtener la bd del catalogo de LEGO
+-Se crea una actividad [Azure Function](scripts/azure-function/web_scraping.py) para poder hacer webscraping en la pagina "https://rebrickable.com/downloads/" para obtener    
+ los links de descarga y poder de esta forma obtener la bd del catalogo de LEGO
 
-esta bd contiene informacion como:
-Official LEGO items - Sets, Parts and Minifigs (no B-Models, Sub-Sets, MOCs)
-Sets and Minifigs contain one or more Inventories (inventories.csv)
-Inventories can contain Sets (inventory_sets.csv) and/or Parts (inventory_parts.csv) and/or Minifigs (inventory_minifigs.csv)
-Part Relationship rel_types are: (P)rint, Pai(R), Su(B)-Part, (M)old, Pa(T)tern, (A)lternate
+  esta bd contiene informacion como:
+  Official LEGO items - Sets, Parts and Minifigs (no B-Models, Sub-Sets, MOCs)
+  Sets and Minifigs contain one or more Inventories (inventories.csv)
+  Inventories can contain Sets (inventory_sets.csv) and/or Parts (inventory_parts.csv) and/or Minifigs (inventory_minifigs.csv)
+  Part Relationship rel_types are: (P)rint, Pai(R), Su(B)-Part, (M)old, Pa(T)tern, (A)lternate
+-Otra actividad que es para convertir esa cadena de links de la actividad anterior en un array y de esta forma poder procesarlo en la actividad siguiente
+-Una actividad ForEach y dentro de una actividad copydata que va a descargar los links y guardarlos en la raw layer en un ADLSg2
+
+  Linked Services utilizados: (agregar pics)
+  Datasets utilizados: HTTP y ADLSg2
+
+ 2° pipeline
+ -Se crea una actividad LookUp para obtener los nombres de las tablas en la [oltp-database](scripts/oltp-database/) (scripts para generar las tablas, datos e importar los datos)
 
 
  
