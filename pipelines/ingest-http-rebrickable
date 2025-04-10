@@ -1,0 +1,138 @@
+{
+    "name": "Ingest_http_rebrickable",
+    "properties": {
+        "activities": [
+            {
+                "name": "Azure Function1",
+                "type": "AzureFunctionActivity",
+                "dependsOn": [],
+                "policy": {
+                    "timeout": "0.12:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "functionName": "rebrickable",
+                    "method": "GET"
+                },
+                "linkedServiceName": {
+                    "referenceName": "AzureFunction1",
+                    "type": "LinkedServiceReference"
+                }
+            },
+            {
+                "name": "CadenaToArray",
+                "description": "Convertir cadena a array",
+                "type": "SetVariable",
+                "dependsOn": [
+                    {
+                        "activity": "Azure Function1",
+                        "dependencyConditions": [
+                            "Succeeded"
+                        ]
+                    }
+                ],
+                "policy": {
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "variableName": "urlsArray",
+                    "value": {
+                        "value": "@json(activity('Azure Function1').output.Response)",
+                        "type": "Expression"
+                    }
+                }
+            },
+            {
+                "name": "ForEach1",
+                "type": "ForEach",
+                "dependsOn": [
+                    {
+                        "activity": "CadenaToArray",
+                        "dependencyConditions": [
+                            "Succeeded"
+                        ]
+                    }
+                ],
+                "userProperties": [],
+                "typeProperties": {
+                    "items": {
+                        "value": "@variables('urlsArray')",
+                        "type": "Expression"
+                    },
+                    "activities": [
+                        {
+                            "name": "Copy data1",
+                            "type": "Copy",
+                            "dependsOn": [],
+                            "policy": {
+                                "timeout": "0.12:00:00",
+                                "retry": 0,
+                                "retryIntervalInSeconds": 30,
+                                "secureOutput": false,
+                                "secureInput": false
+                            },
+                            "userProperties": [],
+                            "typeProperties": {
+                                "source": {
+                                    "type": "BinarySource",
+                                    "storeSettings": {
+                                        "type": "HttpReadSettings",
+                                        "requestMethod": "GET"
+                                    },
+                                    "formatSettings": {
+                                        "type": "BinaryReadSettings"
+                                    }
+                                },
+                                "sink": {
+                                    "type": "BinarySink",
+                                    "storeSettings": {
+                                        "type": "AzureBlobFSWriteSettings"
+                                    }
+                                },
+                                "enableStaging": false
+                            },
+                            "inputs": [
+                                {
+                                    "referenceName": "DS_http",
+                                    "type": "DatasetReference",
+                                    "parameters": {
+                                        "baseUrl": {
+                                            "value": "@item()",
+                                            "type": "Expression"
+                                        }
+                                    }
+                                }
+                            ],
+                            "outputs": [
+                                {
+                                    "referenceName": "DS_datalake",
+                                    "type": "DatasetReference",
+                                    "parameters": {
+                                        "Filename": {
+                                            "value": "@concat(\n    first(split(last(split(item(), '/')), '.csv')),\n    '.csv'\n)",
+                                            "type": "Expression"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            }
+        ],
+        "variables": {
+            "urlsArray": {
+                "type": "Array"
+            }
+        },
+        "annotations": [],
+        "lastPublishTime": "2025-03-21T20:42:07Z"
+    },
+    "type": "Microsoft.DataFactory/factories/pipelines"
+}
