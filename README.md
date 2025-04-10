@@ -50,7 +50,11 @@ Extract data from a website and an OLTP database, transform it, and load it into
 ### 3rd Pipeline (databricks_pipeline)
 - Two Databricks notebooks are created:
   1. The first ([link to notebook](#)) transforms data (cleaning, filtering, enriching, etc.) and stores the transformed data in Delta format in the silver layer
-  2. The second ([link to notebook](#)) implements dimensional modeling (fact and dimension tables) <img src="https://i.imgur.com/6nABICN.png" alt="view model"> to address business needs, storing these tables in the gold layer
+  2. The second ([link to notebook](#)) implements dimensional modeling (fact and dimension tables) to address business needs, storing these tables in the gold layer
+  View model
+  <img src="https://i.imgur.com/6nABICN.png" alt="view model">
+
+
   These notebooks are added as separate activities in ADF
   <img src="https://i.imgur.com/CL67s0o.png" alt="Databricks pipeline">
 
@@ -63,6 +67,8 @@ Extract data from a website and an OLTP database, transform it, and load it into
   <img src="https://i.imgur.com/OpWGgAq.png" alt="Power BI connection">
 
 In this [File](arm_template.zip) you can see the ARM template to provision a similar workspace in ADF.
+
+
 
  
 
