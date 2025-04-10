@@ -5,7 +5,7 @@ import pandas as pd
 server = 'rebrickable-oltp.database.windows.net'
 database = 'oltp_rebrickable'
 username = 'nicolasgonzalez'
-password = 'Hol@12345'
+password = '' #aqui va la contraseña a utilizar
 driver = '{ODBC Driver 17 for SQL Server}'
 
 
