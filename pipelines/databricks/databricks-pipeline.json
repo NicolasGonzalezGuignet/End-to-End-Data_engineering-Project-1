@@ -1,0 +1,71 @@
+{
+    "name": "databricks_pipeline",
+    "properties": {
+        "activities": [
+            {
+                "name": "Transform_data",
+                "type": "DatabricksNotebook",
+                "dependsOn": [],
+                "policy": {
+                    "timeout": "0.12:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "notebookPath": "/Users/nico123nva12984@outlook.com/Databricks_notebook_transform",
+                    "baseParameters": {
+                        "Year": {
+                            "value": "@{formatDateTime(utcnow(), 'yyyy')}",
+                            "type": "Expression"
+                        },
+                        "Month": {
+                            "value": "@{formatDateTime(utcnow(), 'MM')}",
+                            "type": "Expression"
+                        },
+                        "Day": {
+                            "value": "@{formatDateTime(utcnow(), 'dd')}",
+                            "type": "Expression"
+                        }
+                    }
+                },
+                "linkedServiceName": {
+                    "referenceName": "AzureDatabricks1",
+                    "type": "LinkedServiceReference"
+                }
+            },
+            {
+                "name": "Data_modelling",
+                "type": "DatabricksNotebook",
+                "dependsOn": [
+                    {
+                        "activity": "Transform_data",
+                        "dependencyConditions": [
+                            "Succeeded"
+                        ]
+                    }
+                ],
+                "policy": {
+                    "timeout": "0.12:00:00",
+                    "retry": 0,
+                    "retryIntervalInSeconds": 30,
+                    "secureOutput": false,
+                    "secureInput": false
+                },
+                "userProperties": [],
+                "typeProperties": {
+                    "notebookPath": "/Users/nico123nva12984@outlook.com/Data Modelling"
+                },
+                "linkedServiceName": {
+                    "referenceName": "AzureDatabricks1",
+                    "type": "LinkedServiceReference"
+                }
+            }
+        ],
+        "annotations": [],
+        "lastPublishTime": "2025-04-04T20:21:50Z"
+    },
+    "type": "Microsoft.DataFactory/factories/pipelines"
+}
