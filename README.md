@@ -52,7 +52,7 @@ Extract data from a website and an OLTP database, transform it, and load it into
   1. The first ([link to notebook](#)) transforms data (cleaning, filtering, enriching, etc.) and stores the transformed data in Delta format in the silver layer
   2. The second ([link to notebook](#)) implements dimensional modeling (fact and dimension tables) to address business needs, storing these tables in the gold layer
   
-  View model
+  Model View
   
   <img src="https://i.imgur.com/6nABICN.png" alt="view model">
 
