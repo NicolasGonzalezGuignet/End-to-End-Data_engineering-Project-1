@@ -53,6 +53,7 @@ Extract data from a website and an OLTP database, transform it, and load it into
   2. The second ([link to notebook](#)) implements dimensional modeling (fact and dimension tables) to address business needs, storing these tables in the gold layer
   View model
   <img src="https://i.imgur.com/6nABICN.png" alt="view model">
+  
     These notebooks are added as separate activities in ADF
     <img src="https://i.imgur.com/CL67s0o.png" alt="Databricks pipeline">
 
