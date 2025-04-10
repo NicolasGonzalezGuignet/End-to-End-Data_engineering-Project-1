@@ -21,6 +21,26 @@ Aqui se puede visualizar el poryecto realizado. (imagen.png)
 
  Extrear datos de una pagina web y una base de datos oltp, trasformarlos y cargarlos en power bi.
 
-#pasos
+
+## recursos aprovisionados en azure:
+-Azure Data Factory (ADF)
+-Azure Databricks
+-Storage Account (ADLSg2)
+-Azure SQL Database
+-Azure SQL server
+-Function App (Azure function)
+
+## Descripcion del proceso
+
+1° pipeline (ingest-http-rebrickable)
+Se crea una [Azure Function](scripts/azure-function/web_scraping.py) para poder hacer webscraping en la pagina "https://rebrickable.com/downloads/" para obtener los links de descarga y podes de esta forma obtener la bd del catalogo de LEGO
+
+esta bd contiene informacion como:
+Official LEGO items - Sets, Parts and Minifigs (no B-Models, Sub-Sets, MOCs)
+Sets and Minifigs contain one or more Inventories (inventories.csv)
+Inventories can contain Sets (inventory_sets.csv) and/or Parts (inventory_parts.csv) and/or Minifigs (inventory_minifigs.csv)
+Part Relationship rel_types are: (P)rint, Pai(R), Su(B)-Part, (M)old, Pa(T)tern, (A)lternate
+
+
  
 
