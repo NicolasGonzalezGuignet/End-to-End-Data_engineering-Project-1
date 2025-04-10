@@ -15,7 +15,7 @@ Data Pipelines/Rrchestrator: Azure Data Factory
 
 #arquitectura del proyecto
 Aqui se puede visualizar el poryecto realizado. (imagen.png)
- <img src="https://imgur.com/a/E9anxzf" alt="architecture">
+ <img src="https://i.imgur.com/jDJ8lNT.png" alt="architecture">
 
  #objetivos
 
