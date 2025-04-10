@@ -49,8 +49,8 @@ Extract data from a website and an OLTP database, transform it, and load it into
 
 ### 3rd Pipeline (databricks_pipeline)
 - Two Databricks notebooks are created:
-  1. The first ([link to notebook](#)) transforms data (cleaning, filtering, enriching, etc.) and stores the transformed data in Delta format in the silver layer
-  2. The second ([link to notebook](#)) implements dimensional modeling (fact and dimension tables) to address business needs, storing these tables in the gold layer
+  1. The first ([link to notebook](pipelines/databricks/notebooks/Databricks_notebook_transform.ipynb)) transforms data (cleaning, filtering, enriching, etc.) and stores the transformed data in Delta format in the silver layer
+  2. The second ([link to notebook](pipelines/databricks/notebooks/Data_Modelling.ipynb)) implements dimensional modeling (fact and dimension tables) to address business needs, storing these tables in the gold layer
   
   Model View
   
