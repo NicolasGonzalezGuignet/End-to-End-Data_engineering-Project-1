@@ -62,11 +62,11 @@ Extract data from a website and an OLTP database, transform it, and load it into
   
   <img src="https://i.imgur.com/CL67s0o.png" alt="Databricks pipeline">
 
-### 4th Pipeline
+### 4th Pipeline (ETL_Full_Load)
 - This pipeline groups all pipelines into a single pipeline using the Execute Pipeline activity
   <img src="https://i.imgur.com/uUBEYPB.png" alt="Master pipeline">
 
-### 5. Power BI Connection
+### 5. Power BI Connection [Dashborad](power-bi/dashboard.png)
 - A connection is established between the Databricks "gold" database and Power BI for real-time data visualization
   <img src="https://i.imgur.com/OpWGgAq.png" alt="Power BI connection">
 
