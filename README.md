@@ -73,6 +73,9 @@ Extract data from a website and an OLTP database, transform it, and load it into
 In this [File](arm_template.zip) you can see the ARM template to provision a similar workspace in ADF.
 
 
+Here you can see the [video](https://drive.google.com/file/d/1g6jlUvcwRXHP9ZWVMlkXtklbWZ4iJ9AJ/view?usp=sharing) that documents the implementation of the ETL.
+
+
 
  
 
